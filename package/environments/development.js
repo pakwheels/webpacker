@@ -37,14 +37,18 @@ module.exports = class extends Base {
           disableDotRule: true
         },
         headers: devServer.headers,
-        overlay: devServer.overlay,
-        stats: {
+        client: {
+          overlay: devServer.overlay,
+        },
+        devMiddleware: {
           entrypoints: false,
           errorDetails: true,
           modules: false,
           moduleTrace: false
         },
-        watchOptions: devServer.watch_options
+        static: {
+          watch: devServer.watch_options
+        }
       }
     })
   }
