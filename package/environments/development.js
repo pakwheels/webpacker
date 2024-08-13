@@ -25,27 +25,27 @@ module.exports = class extends Base {
         port: devServer.port,
         https: devServer.https,
         hot: devServer.hmr,
-        allowedHosts: devServer.allowed_hosts,
+        allowedHosts: devServer.allowed_hosts,  // Replaces disableHostCheck
         static: {
-          publicPath,
+          publicPath,  // Replaces contentBase
           watch: devServer.watch_options
         },
         client: {
-          logging: 'none',
+          logging: 'none',  // Replaces clientLogLevel and quiet
           overlay: devServer.overlay,
         },
         devMiddleware: {
-          publicPath: devServer.publicPath,
-          entrypoints: false,
-          errorDetails: true,
-          modules: false,
+          publicPath: devServer.public,  // Replaces public
+          stats: {
+            entrypoints: false,
+            errorDetails: true,
+          }
         },
         historyApiFallback: {
           disableDotRule: true
         },
-        headers: devServer.headers
+        headers: devServer.headers,
       }
-    }
-    )
+    })
   }
 }
