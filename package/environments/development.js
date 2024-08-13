@@ -39,7 +39,6 @@ module.exports = class extends Base {
           entrypoints: false,
           errorDetails: true,
           modules: false,
-          moduleTrace: false
         },
         historyApiFallback: {
           disableDotRule: true
