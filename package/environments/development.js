@@ -20,36 +20,33 @@ module.exports = class extends Base {
         pathinfo: true
       },
       devServer: {
-        clientLogLevel: 'none',
         compress: devServer.compress,
-        quiet: devServer.quiet,
-        disableHostCheck: devServer.disable_host_check,
         host: devServer.host,
         port: devServer.port,
         https: devServer.https,
         hot: devServer.hmr,
-        contentBase,
-        inline: devServer.inline,
-        useLocalIp: devServer.use_local_ip,
-        public: devServer.public,
-        publicPath,
-        historyApiFallback: {
-          disableDotRule: true
+        allowedHosts: devServer.allowed_hosts,
+        static: {
+          publicPath,
+          watch: devServer.watch_options
         },
-        headers: devServer.headers,
         client: {
+          logging: 'none',
           overlay: devServer.overlay,
         },
         devMiddleware: {
+          publicPath: devServer.publicPath,
           entrypoints: false,
           errorDetails: true,
           modules: false,
           moduleTrace: false
         },
-        static: {
-          watch: devServer.watch_options
-        }
+        historyApiFallback: {
+          disableDotRule: true
+        },
+        headers: devServer.headers
       }
-    })
+    }
+    )
   }
 }
