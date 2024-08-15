@@ -17,7 +17,8 @@ module.exports = class extends Base {
       cache: true,
       devtool: 'cheap-module-source-map',
       output: {
-        pathinfo: true
+        pathinfo: true,
+        hashFunction: 'sha512',
       },
       devServer: {
         compress: devServer.compress,
